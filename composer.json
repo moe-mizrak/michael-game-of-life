@@ -1,0 +1,27 @@
+{
+    "name": "moe-mizrak/michael-game-of-life",
+    "description": "Michael Game of Life",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Moe Mizrak"
+        }
+    ],
+    "require": {
+        "php": "^8.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "MichaelGameOfLife\\": "src/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
