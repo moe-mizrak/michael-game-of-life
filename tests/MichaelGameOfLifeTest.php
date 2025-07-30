@@ -122,6 +122,24 @@ final class MichaelGameOfLifeTest extends TestCase
         $this->assertEquals(CellState::ALIVE, $nextState);
     }
 
+    #[Test]
+    public function it_kills_live_cell_with_more_than_three_neighbors(): void
+    {
+        /* SETUP */
+        $center = new CellPosition(2, 2);
+        $this->universe->setCell($center, CellState::ALIVE);
+        $this->universe->setCell(new CellPosition(1, 1), CellState::ALIVE);
+        $this->universe->setCell(new CellPosition(1, 2), CellState::ALIVE);
+        $this->universe->setCell(new CellPosition(1, 3), CellState::ALIVE);
+        $this->universe->setCell(new CellPosition(2, 1), CellState::ALIVE);
+
+        /* EXECUTE */
+        $nextState = $this->rules->getNextState($center, $this->universe);
+
+        /* ASSERT */
+        $this->assertEquals(CellState::DEAD, $nextState);
+    }
+
     /**
      * Tests for Game of Life
      */
