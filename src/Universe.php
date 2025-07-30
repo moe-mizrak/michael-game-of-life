@@ -9,7 +9,7 @@ namespace MichaelGameOfLife;
  * 
  * @class Universe
  */
-final class Universe
+final class Universe implements UniverseInterface
 {
     private array $grid;
 
