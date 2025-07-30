@@ -11,6 +11,7 @@ use MichaelGameOfLife\CellState;
 use MichaelGameOfLife\Universe;
 use MichaelGameOfLife\GameTransitionRules;
 use MichaelGameOfLife\Game;
+use MichaelGameOfLife\PatternFactory;
 
 final class MichaelGameOfLifeTest extends TestCase
 {
@@ -139,5 +140,39 @@ final class MichaelGameOfLifeTest extends TestCase
         /* ASSERT */
         $this->assertEquals(CellState::ALIVE, $universe->getCell(new CellPosition(5, 5)));
         $this->assertEquals(CellState::ALIVE, $universe->getCell(new CellPosition(5, 6)));
+    }
+
+    #[Test]
+    public function it_advances_to_next_generation(): void
+    {
+        /* SETUP */
+        $universe = new Universe(10);
+        $rules = new GameTransitionRules();
+        $game = new Game($universe, $rules);
+        $pattern = PatternFactory::createGlider(5, 5);
+        
+        $game->initializeWithPattern($pattern);
+        $initialGrid = $game->getUniverse()->getAllCells();
+
+        /* EXECUTE */
+        $game->nextGeneration();
+        $newGrid = $game->getUniverse()->getAllCells();
+
+        /* ASSERT */
+        $this->assertNotEquals($initialGrid, $newGrid);
+    }
+
+    /**
+     * Tests for Pattern Factory
+     */
+    #[Test]
+    public function it_creates_glider_pattern_with_five_cells(): void
+    {
+        /* SETUP */
+        $glider = PatternFactory::createGlider(5, 5);
+
+        /* ASSERT */
+        $this->assertCount(5, $glider);
+        $this->assertContainsOnlyInstancesOf(CellPosition::class, $glider);
     }
 }
