@@ -11,7 +11,7 @@ Michael Game of Life
 - [ ] Add tests for the `edge cases`
 - [ ] `Check the document` for the **game of life** if anything is missing or can be improved
 - [ ] `Check the overall code` so that it can be improved regarding design patterns, KISS, YAGNI etc,, make sure to keep it clean, simple and easy to understand. Make sure `not to overengineer` it.
-- [ ] Add github actions for automated testing
+- [x] Add github actions for automated testing
 - [ ] Add code coverage for tests
 - [ ] Add static analysis tools (phpstan etc), add them to github actions so that will automatically modify/lint the code when necessary
 - [ ] `Update readme file` to show how to run the code, requirements such as php version etc. write a simple `usage section`.
