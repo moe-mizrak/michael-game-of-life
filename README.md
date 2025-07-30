@@ -6,7 +6,7 @@ Michael Game of Life
 
 - [x] `Create the main skeleton` by adding composer (needed for autoloading, and phpunit), index.php, phpunit.xml, .gitignore, .github/workflows, and folder structure
 - [x] `Write tests` and `start adding classes` (will be decided as I write the code)
-- [ ] `Implement index.php` so that the results will be `shown in the console`
+- [x] `Implement index.php` so that the results will be `shown in the console`
 - [ ] `Add/improve docblocks` for the class and methods
 - [ ] Add tests for the `edge cases`
 - [ ] `Check the document` for the **game of life** if anything is missing or can be improved
