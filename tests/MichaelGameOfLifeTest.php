@@ -10,6 +10,7 @@ use MichaelGameOfLife\CellPosition;
 use MichaelGameOfLife\CellState;
 use MichaelGameOfLife\Universe;
 use MichaelGameOfLife\GameTransitionRules;
+use MichaelGameOfLife\Game;
 
 final class MichaelGameOfLifeTest extends TestCase
 {
@@ -118,5 +119,25 @@ final class MichaelGameOfLifeTest extends TestCase
 
         /* ASSERT */
         $this->assertEquals(CellState::ALIVE, $nextState);
+    }
+
+    /**
+     * Tests for Game of Life
+     */
+    #[Test]
+    public function it_can_initialize_game_with_pattern(): void
+    {
+       /* SETUP */
+        $universe = new Universe(10);
+        $rules = new GameTransitionRules();
+        $game = new Game($universe, $rules);
+        $pattern = [new CellPosition(5, 5), new CellPosition(5, 6)];
+
+        /* EXECUTE */
+        $game->initializeWithPattern($pattern);
+
+        /* ASSERT */
+        $this->assertEquals(CellState::ALIVE, $universe->getCell(new CellPosition(5, 5)));
+        $this->assertEquals(CellState::ALIVE, $universe->getCell(new CellPosition(5, 6)));
     }
 }
